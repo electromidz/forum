@@ -2,8 +2,8 @@ import * as React from "react";
 import { useRef } from "react";
 import { motion, useCycle } from "framer-motion";
 import { useDimensions } from "./use-dimensions";
-// import { MenuToggle } from "./MenuToggle";
-// import { Navigation } from "./Navigation";
+import { MenuToggle } from "./MenuToggle";
+import { Navigation } from "./Navigation";
 
 const sidebar = {
   open: (height = 1000) => ({
@@ -38,11 +38,10 @@ const Nav = () => {
         custom={height}
         ref={containerRef}
       >
-        {/* <motion.div className="background" variants={sidebar} /> */}
-        {/* <Navigation /> */}
-        {/* <MenuToggle toggle={() => toggleOpen()} /> */}
+        <motion.div className="background" variants={sidebar} />
+        <Navigation />
+        <MenuToggle toggle={() => toggleOpen()} />
       </motion.nav>
-      <>Nav</>
     </>
   );
 };

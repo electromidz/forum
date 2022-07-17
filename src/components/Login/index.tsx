@@ -30,7 +30,9 @@ const Login = () => {
         });
         router.push("/forum");
       } else if (response.status == 401) {
-        setMessage("ایمیل و یا رمز ورود خود را اشتباه وارد کرده اید! 🎃");
+        setMessage(
+          "ایمیل و یا رمز ورود خود را اشتباه وارد کردی کسی چه میدونه! 🎃"
+        );
       } else {
         setMessage(
           "سرویس مورد نظر شما در حال حاضر در دسترس نمی باشد \u{1F63C}"
@@ -59,7 +61,7 @@ const Login = () => {
       className="relative flex flex-col justify-center min-h-screen overflow-hidden"
     >
       <div className="w-full p-6 m-auto bg-white rounded-md  lg:max-w-xl">
-        <h1 className="text-3xl font-semibold text-center">چی گفتی؟!</h1>
+        <h1 className="text-3xl font-semibold text-center">چی گفتی؟! 🤔</h1>
         <form
           className="mt-6"
           onSubmit={async (contact: any) => {
@@ -87,17 +89,19 @@ const Login = () => {
               name="password"
             />
           </div>
-          <Link href="#" className="text-xs hover:underline">
-            فراموشی رمز عبور؟
-          </Link>
-          <p className="mt-2 text-xs text-slate-700">{message}</p>
+          <p className="text-xs hover:underline">
+            <Link href="#" >
+              فراموشی رمز عبور؟
+            </Link>
+          </p>
+          <p className="mt-2 text-xs text-rose-500 font-normal">{message}</p>
           <div className="mt-6">
             <button
               type="submit"
               onClick={() => submitHandler()}
               className="w-full px-4 py-2 tracking-wide text-black border-solid border-2 border-slate-800  transition-colors duration-200 transform rounded-md hover:border-1 hover:text-black focus:outline-none focus:border-1"
             >
-              ورود
+             ورود 👋 
             </button>
           </div>
         </form>
