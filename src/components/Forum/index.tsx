@@ -4,7 +4,7 @@ const Forum = () => {
   return (
     <div dir="rtl">
       <Nav />
-      <motion.div
+      {/* <motion.div
         style={{
           width: 100,
           height: 100,
@@ -21,7 +21,7 @@ const Forum = () => {
           times: [0, 0.2, 0.5, 0.8, 1],
           repeatDelay: 1,
         }}
-      />
+      /> */}
     </div>
   );
 };
