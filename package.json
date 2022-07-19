@@ -19,7 +19,8 @@
     "next-pwa": "^5.5.4",
     "party-js": "^2.2.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
     "@swc/cli": "^0.1.57",

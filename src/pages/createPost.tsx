@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 function CreatePost() {
+  //TODO: implement function for create on post
   return (
     <div dir="rtl">
       <Navbar />

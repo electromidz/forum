@@ -33,11 +33,11 @@ const Home: NextPage = () => {
         body: JSONdata,
       };
 
-      // // Send the form data to our forms API on Vercel and get a response.
+      // Send the form data to our forms API on Vercel and get a response.
       const response = await fetch(endpoint, options);
 
-      // // Get the response data from server as JSON.
-      // // If server returns the name submitted, that means the form works.
+      // Get the response data from server as JSON.
+      // If server returns the name submitted, that means the form works.
       const result = await response.json();
       console.log(`Is this your full name: ${result.data}`);
     } catch (error) {
@@ -89,7 +89,7 @@ const Home: NextPage = () => {
               placeholder="نام مستعار"
             />
           </div>
- <div className="mb-2">
+          <div className="mb-2">
             <label htmlFor="avatar"></label>
             <input
               type="text"
