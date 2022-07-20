@@ -22,17 +22,18 @@ model User {
   post Post[] @relation("UserAuthorPost")
 
   likedIds  String[] @db.ObjectId
-  likedPost Post[]   @relation(fields: [likedIds], references: [id])
+  // likedPost Post[]   @relation(fields: [likedIds], references: [id])
 }
 
 model Post {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+
+  title   String
+  content String
 
   author   User   @relation("UserAuthorPost", fields: [authorId], references: [id])
   authorId String
 
-  likedIDs String[] @db.ObjectId
-  likedBy  User[]   @relation(fields: [likedIDs], references: [id])
+  // likedIDs String[] @db.ObjectId
+  // likedBy  User[]   @relation(fields: [likedIDs], references: [id])
 }
-
-

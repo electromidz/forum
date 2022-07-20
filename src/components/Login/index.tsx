@@ -3,6 +3,12 @@ import Link from "next/link";
 import party from "party-js";
 import { useRouter } from "next/router";
 
+type Result = {
+  hasError: boolean;
+  message: string;
+  username: string;
+};
+
 const Login = () => {
   const router = useRouter();
   const [message, setMessage] = useState<string>("");
@@ -24,6 +30,8 @@ const Login = () => {
       };
       const response = await fetch(endpoint, options);
       if (response.status == 200) {
+        let result: Result = await response.json();
+        localStorage.setItem("username", result.username);
         party.confetti(event.target, {
           shapes: ["star", "roundedSquare"],
           count: party.variation.range(20, 40),
@@ -90,9 +98,7 @@ const Login = () => {
             />
           </div>
           <p className="text-xs hover:underline">
-            <Link href="#" >
-              فراموشی رمز عبور؟
-            </Link>
+            <Link href="#">فراموشی رمز عبور؟</Link>
           </p>
           <p className="mt-2 text-xs text-rose-500 font-normal">{message}</p>
           <div className="mt-6">
@@ -101,7 +107,7 @@ const Login = () => {
               onClick={() => submitHandler()}
               className="w-full px-4 py-2 tracking-wide text-black border-solid border-2 border-slate-800  transition-colors duration-200 transform rounded-md hover:border-1 hover:text-black focus:outline-none focus:border-1"
             >
-             ورود 👋 
+              ورود 👋
             </button>
           </div>
         </form>

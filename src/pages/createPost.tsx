@@ -1,6 +1,33 @@
 import { Navbar } from "@/components/Navbar";
+import { m } from "framer-motion";
 function CreatePost() {
   //TODO: implement function for create on post
+
+  async function handleSubmit(event: any) {
+    try {
+      console.log("username -> ", localStorage.getItem("username"));
+      // Get data from the form.
+      let username = localStorage.getItem("username");
+      const data = {
+        title: event.target.title.value,
+        content: event.target.content.value,
+        username,
+      };
+
+      const JSONdata = JSON.stringify(data);
+      const endpoint = "/api/createPost";
+      const option = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSONdata,
+      };
+      const response = await fetch(endpoint, option);
+      console.log('RESPONSE -> ', response)
+    } catch (error) {}
+  }
+
   return (
     <div dir="rtl">
       <Navbar />
@@ -15,11 +42,11 @@ function CreatePost() {
           <form
             className="mt-6"
             onSubmit={async (contact: any) => {
-              // try {
-              //   await handleSubmit(contact);
-              // } catch (error) {
-              //   console.log(error);
-              // }
+              try {
+                await handleSubmit(contact);
+              } catch (error) {
+                console.log(error);
+              }
             }}
             method="POST"
           >

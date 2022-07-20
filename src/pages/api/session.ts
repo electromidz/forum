@@ -7,6 +7,7 @@ import bcrypt from "bcryptjs";
 type Data = {
   message?: string;
   hasError?: boolean;
+  username?: string
 };
 
 async function login(username: string, password: string) {
@@ -35,7 +36,7 @@ export default async function handler(
           "set-cookie",
           `session=${usernameHash}; path=/; samesite=lax; httponly;`
         );
-        return res.status(200).json({ message: "success!", hasError: false });
+        return res.status(200).json({ message: "success!", hasError: false, username: username });
       }
       return res
         .status(401)
