@@ -10,6 +10,14 @@ generator client {
   provider = "prisma-client-js"
 }
 
+// ** Any user can be have one Profile
+model Profile {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  user   User   @relation("UserHasProfile", fields: [userId], references: [id])
+  userId String @unique
+}
+
 model User {
   id           String   @id @default(auto()) @map("_id") @db.ObjectId
   username     String   @unique
@@ -19,11 +27,17 @@ model User {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
-  psot   Post   @relation("UserAuthorPost", fields: [postId], references: [id])
-  postId String @unique
+  post Post[]
 
-  // likedIds  String[] @db.ObjectId
-  // likedPost Post[]   @relation(fields: [likedIds], references: [id])
+  profile Profile? @relation("UserHasProfile")
+
+  likedPosts    Post[]   @relation("UserLikesPost", fields: [likedPostsIDs], references: [id])
+  likedPostsIDs String[] @db.ObjectId
+
+  //Comment
+  comments        Comment[] @relation("UserAuthorComment")
+  likedComment    Comment[] @relation("UserLikesComment", fields: [likedCommentIDs], references: [id])
+  likedCommentIDs String[]  @db.ObjectId
 }
 
 model Post {
@@ -32,8 +46,41 @@ model Post {
   title   String
   content String
 
-  user User[] @relation("UserAuthorPost")
+  author   User   @relation(fields: [authorId], references: [id])
+  authorId String @db.ObjectId
 
-  // likedIDs String[] @db.ObjectId
-  // likedBy  User[]   @relation(fields: [likedIDs], references: [id])
+  categories  Category[] @relation("PostCatagories", fields: [categoryIDs], references: [id])
+  categoryIDs String[]   @db.ObjectId
+
+  PostlikedBy User[]   @relation("UserLikesPost", fields: [likedByIDs], references: [id])
+  likedByIDs  String[] @db.ObjectId
+
+  comments Comment[] @relation("PostHasComment")
+}
+
+model Category {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  posts   Post[]   @relation("PostCatagories", fields: [postIDs], references: [id])
+  postIDs String[] @db.ObjectId
+}
+
+model Comment {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  post   Post   @relation("PostHasComment", fields: [postId], references: [id])
+  postId String @db.ObjectId
+
+  parentComment   Comment   @relation(name: "CommentParentsComment", fields: [parentCommentID], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  childComments   Comment[] @relation(name: "CommentParentsComment")
+  parentCommentID String
+
+  author   User     @relation("UserAuthorComment", fields: [authorID], references: [id])
+  authorID String
+  likedBy  User[]   @relation("UserLikesComment", fields: [likedID], references: [id])
+  likedID  String[] @db.ObjectId
 }

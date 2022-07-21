@@ -23,17 +23,11 @@ export default async function handler(
       console.log(user);
       if (user !== null) {
         // FIXME: I worked there
-        const saveUser = await prisma.user.create({
-          where: {
-            id: user.id,
-          },
+        const saveUser = await prisma.post.create({
           data: {
-            post: {
-              create: {
-                title: title,
-                content: content,
-              },
-            },
+            title:title,
+            content: content,
+            userId: user.id
           },
         });
         console.log(saveUser);
