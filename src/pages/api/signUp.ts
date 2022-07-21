@@ -29,9 +29,8 @@ export default async function handler(
         },
       });
       console.log(saveUser);
-      res.status(201).json({ message: "success!" });
+      return res.status(201).json({ message: "success!" });
     default:
-      res.status(406).json({ message: "Method not allowed!" });
-      break;
+      return res.status(406).json({ message: "Method not allowed!" });
   }
 }

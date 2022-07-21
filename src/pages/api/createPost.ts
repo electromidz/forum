@@ -22,16 +22,22 @@ export default async function handler(
       });
       console.log(user);
       if (user !== null) {
-        const saveUser = await prisma.post.create({
+        // FIXME: I worked there
+        const saveUser = await prisma.user.create({
+          where: {
+            id: user.id,
+          },
           data: {
-            title: "title",
-            content: "content",
-            authorId: user.id,
-            author: user,
+            post: {
+              create: {
+                title: title,
+                content: content,
+              },
+            },
           },
         });
+        console.log(saveUser);
       }
-
       return res.status(201).json({ message: "success!" });
     default:
       return res.status(406).json({ message: "Method not allowed!" });
