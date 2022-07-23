@@ -27,7 +27,8 @@ export default async function handler(
           data: {
             title:title,
             content: content,
-            userId: user.id
+            authorId: user.id,
+            categoryIDs:"62d93867acac2011511c1f55"
           },
         });
         console.log(saveUser);
