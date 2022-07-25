@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { SWRConfig } from "swr";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -12,7 +13,15 @@ function MyApp({ Component, pageProps }: AppProps) {
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
         />
       </Head>
-      <Component {...pageProps} />
+      <SWRConfig
+        value={{
+          refreshInterval: 3000,
+          fetcher: (resource, init) =>
+            fetch(resource, init).then((res) => res.json()),
+        }}
+      >
+        <Component {...pageProps} />
+      </SWRConfig>
     </>
   );
 }

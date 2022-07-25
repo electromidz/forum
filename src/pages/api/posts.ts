@@ -3,9 +3,9 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-
 type Data = {
   message: string;
+  data?: any;
 };
 
 export default async function handler(
@@ -14,10 +14,8 @@ export default async function handler(
 ) {
   switch (req.method) {
     case "GET":
-        console.log('HERE')
-        const posts = await prisma.post.findMany()
-        console.log(posts)
-      return res.status(201).json({ message: "success!" });
+      const posts = await prisma.post.findMany();
+      return res.status(201).json({ message: "success!", data: posts });
     default:
       return res.status(406).json({ message: "Method not allowed!" });
   }

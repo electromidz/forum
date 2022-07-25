@@ -21,14 +21,15 @@ export default async function handler(
         },
       });
       console.log(user);
+      console.log(req.body);
       if (user !== null) {
         // FIXME: I worked there
         const saveUser = await prisma.post.create({
           data: {
-            title:title,
+            title: title,
             content: content,
             authorId: user.id,
-            categoryIDs:"62d93867acac2011511c1f55"
+            categoryIDs: "62d93867acac2011511c1f55",
           },
         });
         console.log(saveUser);
