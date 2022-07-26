@@ -1,6 +1,8 @@
 import { Navbar } from "@/components/Navbar";
-import { m } from "framer-motion";
+import { useRouter } from "next/router";
+
 function CreatePost() {
+  const router = useRouter();
   //TODO: implement function for create on post
 
   async function handleSubmit(event: any) {
@@ -24,7 +26,8 @@ function CreatePost() {
         body: JSONdata,
       };
       const response = await fetch(endpoint, option);
-      console.log("RESPONSE -> ", response);
+      // FIXME: fix this status dont redirect page to forum
+      response.status === 201 ? router.push("/forum") : null;
     } catch (error) {}
   }
 

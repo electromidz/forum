@@ -1,7 +1,9 @@
 import type { NextPage } from "next";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Home: NextPage = () => {
+  const router = useRouter();
   async function handleSubmit(event: any) {
     try {
       // Stop the form from submitting and refreshing the page.
@@ -38,6 +40,7 @@ const Home: NextPage = () => {
 
       // Get the response data from server as JSON.
       // If server returns the name submitted, that means the form works.
+      response.status === 201 ? router.push("/") : null;
       const result = await response.json();
       console.log(`Is this your full name: ${result.data}`);
     } catch (error) {
