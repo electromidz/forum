@@ -18,6 +18,11 @@ export default async function handler(
         orderBy: {
           id: "desc",
         },
+        include: {
+          author: true,
+          categories: true,
+        },
+        take: 10,
       });
       return res.status(201).json({ message: "success!", data: posts });
     default:
