@@ -42,15 +42,7 @@ body {
   height: 200px;
   padding: 10px;
   border-radius: 3.75% / 7.5%;
+  border: 1px solid #000;
   transform: translate(-50%, -50%) !important;
-  background-color: white;
+  background-color: #f9fafb;
 }
-
-/* a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-} */

@@ -8,7 +8,7 @@ const Forum = () => {
   const [selectedId, setSelectedId] = useState<any>(null);
 
   return (
-    <div dir="rtl">
+    <div dir="rtl" style={{ backgroundColor: "#f3f4f6" }}>
       <Navbar />
       {!data && !error && <p>Loading...</p>}
       {!data && error && <p>No profile data</p>}
@@ -17,7 +17,8 @@ const Forum = () => {
           return (
             <>
               <motion.div
-                className="w-200 shadow-md w-80 h-44 overflow-hidden p-4 m-4 rounded"
+                className="w-200 w-80 h-44 overflow-hidden p-6 m-3 border border-gray-100 rounded-xl bg-gray-50  sm:space-x-8 sm:p-8"
+                // style={{ backgroundColor: "#f9fafb" }}
                 layoutId={e.id}
                 onClick={() => setSelectedId(e.id)}
                 key={e.id}

@@ -14,7 +14,11 @@ export default async function handler(
 ) {
   switch (req.method) {
     case "GET":
-      const posts = await prisma.post.findMany();
+      const posts = await prisma.post.findMany({
+        orderBy: {
+          id: "desc",
+        },
+      });
       return res.status(201).json({ message: "success!", data: posts });
     default:
       return res.status(406).json({ message: "Method not allowed!" });
