@@ -14,6 +14,7 @@ function CreatePost() {
         title: event.target.title.value,
         content: event.target.content.value,
         username,
+        category: event.target.catagory.value,
       };
 
       const JSONdata = JSON.stringify(data);
@@ -53,6 +54,25 @@ function CreatePost() {
             }}
             method="POST"
           >
+            <div className="mb-2">
+              <label htmlFor="category"></label>
+              <input
+                type="text"
+                name="category"
+                // pattern="[a-z0-9]{1,15}"
+                required
+                className="block w-full px-4 py-2 mt-2 text-slate-700 bg-white border rounded-md focus:border-slate-400 focus:ring-slate-300 focus:outline-none focus:ring focus:ring-opacity-40 border-solid border-1 border-slate-600"
+                placeholder="ایجاد عنوان جدید"
+              />
+            </div>
+            <select className="block w-full px-4 py-2 mt-2 text-slate-700 bg-white border rounded-md focus:border-slate-400 focus:ring-slate-300 focus:outline-none focus:ring focus:ring-opacity-40 border-solid border-1 border-slate-600">
+              <option className="block w-full px-4 py-2 mt-2 text-slate-700 bg-white border rounded-md focus:border-slate-400 focus:ring-slate-300 focus:outline-none focus:ring focus:ring-opacity-40 border-solid border-1 border-slate-600">
+                1
+              </option>
+              <option className="block w-full px-4 py-2 mt-2 text-slate-700 bg-white border rounded-md focus:border-slate-400 focus:ring-slate-300 focus:outline-none focus:ring focus:ring-opacity-40 border-solid border-1 border-slate-600">
+                2
+              </option>
+            </select>
             <div className="mb-2">
               <label htmlFor="username"></label>
               <input
