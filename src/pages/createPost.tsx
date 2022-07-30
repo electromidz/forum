@@ -7,17 +7,17 @@ function CreatePost() {
 
   async function handleSubmit(event: any) {
     try {
-      console.log("username -> ", localStorage.getItem("username"));
       // Get data from the form.
       let username = localStorage.getItem("username");
       const data = {
         title: event.target.title.value,
         content: event.target.content.value,
         username,
-        category: event.target.catagory.value,
+        category: event.target.category.value,
       };
 
       const JSONdata = JSON.stringify(data);
+      console.log(JSONdata);
       const endpoint = "/api/createPost";
       const option = {
         method: "POST",
