@@ -60,7 +60,7 @@ model Post {
 
 model Category {
   id   String @id @default(auto()) @map("_id") @db.ObjectId
-  slug String
+  slug String 
 
   posts   Post[]   @relation("PostCatagories", fields: [postIDs], references: [id])
   postIDs String[] @db.ObjectId

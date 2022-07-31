@@ -22,6 +22,9 @@ const Forum = () => {
             <React.Fragment key={e.id}>
               <motion.div
                 className="w-200 w-80 h-48 overflow-hidden p-6 m-3 border border-gray-100 rounded-xl bg-gray-50  sm:space-x-8 sm:p-8"
+                style={{
+                  borderRadius: "1.2rem",
+                }}
                 layoutId={e.id}
                 onClick={() => setSelectedId(e.id)}
               >
@@ -32,9 +35,9 @@ const Forum = () => {
                 <motion.h5 className="text-red-700 truncate font-bold  text-sm">
                   {e?.title}
                 </motion.h5>
-                <motion.p className="text-sm mt-1">
+                {/* <motion.p className="text-sm mt-1">
                   {e?.content.slice(0, 150) + "..."}
-                </motion.p>
+                </motion.p> */}
                 <p>{}</p>
               </motion.div>
 
@@ -59,7 +62,7 @@ const Forum = () => {
                         {e.title}
                       </motion.h5>
                       <motion.p className="text-green-900	text-sm mt-1">
-                        {e.content}
+                        {e?.content.slice(0, 150) + "..."}
                       </motion.p>
                     </motion.div>
                   )}

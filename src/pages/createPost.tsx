@@ -1,9 +1,15 @@
+import React, { useEffect, useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { useRouter } from "next/router";
+import useSWR from "swr";
 
 function CreatePost() {
   const router = useRouter();
   //TODO: implement function for create on post
+  const { data, error } = useSWR("/api/categorie");
+  useEffect(() => {
+    console.log("Data ->", data?.data);
+  }, [data]);
 
   async function handleSubmit(event: any) {
     try {
@@ -28,7 +34,8 @@ function CreatePost() {
       };
       const response = await fetch(endpoint, option);
       // FIXME: fix this status dont redirect page to forum
-      response.status === 201 ? router.push("/forum") : null;
+      console.log("response", response.status);
+      response.status ? router.push("/forum") : null;
     } catch (error) {}
   }
 
@@ -65,14 +72,23 @@ function CreatePost() {
                 placeholder="ایجاد عنوان جدید"
               />
             </div>
-            <select className="block w-full px-4 py-2 mt-2 text-slate-700 bg-white border rounded-md focus:border-slate-400 focus:ring-slate-300 focus:outline-none focus:ring focus:ring-opacity-40 border-solid border-1 border-slate-600">
-              <option className="block w-full px-4 py-2 mt-2 text-slate-700 bg-white border rounded-md focus:border-slate-400 focus:ring-slate-300 focus:outline-none focus:ring focus:ring-opacity-40 border-solid border-1 border-slate-600">
-                1
-              </option>
-              <option className="block w-full px-4 py-2 mt-2 text-slate-700 bg-white border rounded-md focus:border-slate-400 focus:ring-slate-300 focus:outline-none focus:ring focus:ring-opacity-40 border-solid border-1 border-slate-600">
-                2
-              </option>
-            </select>
+            {data && (
+              <select className="block w-full px-4 py-2 mt-2 text-slate-700 bg-white border rounded-md focus:border-slate-400 focus:ring-slate-300 focus:outline-none focus:ring focus:ring-opacity-40 border-solid border-1 border-slate-600">
+                <option className="block w-full px-4 py-2 mt-2 text-slate-700 bg-white border rounded-md focus:border-slate-400 focus:ring-slate-300 focus:outline-none focus:ring focus:ring-opacity-40 border-solid border-1 border-slate-600">
+                  می تونی از اینا هم انتخاب کنی!
+                </option>
+                {data?.data.map((e: any) => {
+                  return (
+                    <option
+                      key={e.id}
+                      className="block w-full px-4 py-2 mt-2 text-slate-700 bg-white border rounded-md focus:border-slate-400 focus:ring-slate-300 focus:outline-none focus:ring focus:ring-opacity-40 border-solid border-1 border-slate-600"
+                    >
+                      {e?.slug.toString()}
+                    </option>
+                  );
+                })}
+              </select>
+            )}
             <div className="mb-2">
               <label htmlFor="username"></label>
               <input

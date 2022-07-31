@@ -28,24 +28,27 @@ export default async function handler(
               slug: category,
             },
           });
-          console.log("CAT -> ", cat);
         }
       } catch (error) {
         console.log("error category: ", error);
       }
 
-      // if (user !== null) {
-      //   // FIXME: I worked there
-      //   const saveUser = await prisma.post.create({
-      //     data: {
-      //       title: title,
-      //       content: content,
-      //       authorId: user.id,
-      //       categoryIDs: "62d93867acac2011511c1f55",
-      //     },
-      //   });
-      //   console.log(saveUser);
-      // }
+      if (user !== null) {
+        // FIXME: I worked there
+        const saveUser = await prisma.post.create({
+          data: {
+            title: title,
+            content: content,
+            authorId: user.id,
+            categories: {
+              create: {
+                slug: category,
+              },
+            },
+          },
+        });
+        console.log(saveUser);
+      }
       return res.status(201).json({ message: "success!" });
     default:
       return res.status(406).json({ message: "Method not allowed!" });
