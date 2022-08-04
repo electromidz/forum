@@ -16,7 +16,7 @@ const Forum = () => {
       <Navbar />
       {!data && !error && <p>Loading...</p>}
       {!data && error && <p>No profile data</p>}
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap justify-center">
         {data?.data.map((e: any) => {
           return (
             <React.Fragment key={e.id}>
@@ -27,17 +27,34 @@ const Forum = () => {
                 }}
                 layoutId={e.id}
                 onClick={() => setSelectedId(e.id)}
+                animate={{
+                  opacity: 1,
+                }}
+                initial={{
+                  opacity: 0.2,
+                }}
+                transition={{
+                  duration: 0.6,
+                }}
               >
                 <div className="flex justify-between">
-                  <Image src={e?.author?.avatar} width="25" height="25" />
+                  <Image
+                    src={e?.author?.avatar}
+                    alt={e?.author.name}
+                    width="25"
+                    height="25"
+                    style={{
+                      borderRadius: "50%",
+                    }}
+                  />
                   <p>{e?.author?.username}</p>
                 </div>
                 <motion.h5 className="text-red-700 truncate font-bold  text-sm">
                   {e?.title}
                 </motion.h5>
-                {/* <motion.p className="text-sm mt-1">
+                <motion.p className="text-sm mt-1">
                   {e?.content.slice(0, 150) + "..."}
-                </motion.p> */}
+                </motion.p>
                 <p>{}</p>
               </motion.div>
 

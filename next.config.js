@@ -11,6 +11,7 @@ module.exports = nextConfig;
 module.exports = withPWA({
   swcMinify: true,
   images: {
+    allowFutureImage: true,
     domains: ["github.com"],
   },
   pwa: {
