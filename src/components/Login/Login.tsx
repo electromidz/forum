@@ -84,7 +84,7 @@ const Login = ({ setLoggedIn }: TProps) => {
           type: "spring",
           stiffness: 50,
         }}
-        className="absolute h-full w-full p-6 m-auto bg-[#e1e4e8] rounded-3xl  lg:max-w-xl"
+        className="absolute h-full w-full p-6 m-auto lg:max-w-xl"
         style={{ top: "25%", left: 0, right: 0 }}
       >
         <div
@@ -110,11 +110,7 @@ const Login = ({ setLoggedIn }: TProps) => {
           <div className="mb-2">
             <input
               type="text"
-              className="block w-full px-4 py-2 mt-2 text-slate-700 focus:bg-slate focus:border-spacing-y-9 "
-              style={{
-                borderBottom: "1px solid #64666c",
-                background: "none",
-              }}
+              className="block w-full px-4 py-2 mt-2 text-slate-700 border-b focus:border-b focus:ring-slate-300 focus:outline-none  focus:ring-opacity-40 border-solid border-1 border-slate-600"
               placeholder="نام کاربری"
               name="username"
             />
@@ -122,13 +118,9 @@ const Login = ({ setLoggedIn }: TProps) => {
           <div className="mb-2">
             <input
               type="password"
-              className="block w-full px-4 py-2 mt-2 text-slate-700 "
+              className="block w-full px-4 py-2 mt-2 text-slate-700 border-b focus:border-b focus:ring-slate-300 focus:outline-none  focus:ring-opacity-40 border-solid border-1 border-slate-600"
               placeholder="گذرواژه"
               name="password"
-              style={{
-                borderBottom: "1px solid #64666c",
-                background: "none",
-              }}
             />
           </div>
           <p className="text-xs hover:underline mt-5">
@@ -139,8 +131,8 @@ const Login = ({ setLoggedIn }: TProps) => {
             <button
               type="submit"
               onClick={() => submitHandler()}
-              className="w-full px-4 py-2 tracking-wide text-black border-solid border-2 border-slate-800  transition-colors duration-200 transform rounded-md hover:border-1 hover:text-black focus:outline-none focus:border-1"
-              style={{ backgroundColor: "#0E0E10", color: "#E1E4E8" }}
+              className="w-full px-4 py-2 tracking-wide text-black border-solid border-2 border-slate-800  transition-colors duration-200 transform  hover:border-1 hover:text-black focus:outline-none focus:border-1"
+              style={{ backgroundColor: "rgba(0,0,0,.8)", color: "#E1E4E8" }}
             >
               ورود 👋
             </button>

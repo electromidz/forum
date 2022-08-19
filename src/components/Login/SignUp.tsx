@@ -82,7 +82,7 @@ const SignUp = ({ setLoggedIn }: TProps) => {
               name="username"
               pattern="[a-z0-9]{1,15}"
               required
-              className="block w-full px-4 py-2 mt-2 text-slate-700 bg-white border rounded-md focus:border-slate-400 focus:ring-slate-300 focus:outline-none focus:ring focus:ring-opacity-40 border-solid border-1 border-slate-600"
+              className="block w-full px-4 py-2 mt-2 text-slate-700 border-b focus:border-b focus:ring-slate-300 focus:outline-none  focus:ring-opacity-40 border-solid border-1 border-slate-600"
               placeholder="نام کاربری"
             />
           </div>
@@ -91,7 +91,7 @@ const SignUp = ({ setLoggedIn }: TProps) => {
             <input
               type="text"
               name="nickname"
-              className="block w-full px-4 py-2 mt-2 text-slate-700 bg-white border rounded-md focus:border-slate-400 focus:ring-slate-300 focus:outline-none focus:ring focus:ring-opacity-40 border-solid border-1 border-slate-600"
+              className="block w-full px-4 py-2 mt-2 text-slate-700 border-b focus:border-b focus:ring-slate-300 focus:outline-none  focus:ring-opacity-40 border-solid border-1 border-slate-600"
               placeholder="نام مستعار"
             />
           </div>
@@ -100,7 +100,7 @@ const SignUp = ({ setLoggedIn }: TProps) => {
             <input
               type="text"
               name="avatar"
-              className="block w-full px-4 py-2 mt-2 text-slate-700 bg-white border rounded-md focus:border-slate-400 focus:ring-slate-300 focus:outline-none focus:ring focus:ring-opacity-40 border-solid border-1 border-slate-600"
+              className="block w-full px-4 py-2 mt-2 text-slate-700 border-b focus:border-b focus:ring-slate-300 focus:outline-none  focus:ring-opacity-40 border-solid border-1 border-slate-600"
               placeholder="لینک  آواتار"
             />
           </div>
@@ -109,14 +109,14 @@ const SignUp = ({ setLoggedIn }: TProps) => {
             <input
               type="password"
               name="password"
-              className="block w-full px-4 py-2 mt-2 text-slate-700 bg-white border rounded-md focus:border-slate-400 focus:ring-slate-300 focus:outline-none focus:ring focus:ring-opacity-40 border-solid border-1 border-slate-600"
+              className="block w-full px-4 py-2 mt-2 text-slate-700 border-b focus:border-b focus:ring-slate-300 focus:outline-none  focus:ring-opacity-40 border-solid border-1 border-slate-600"
               placeholder="گذرواژه"
             />
           </div>
           <div className="mt-6">
             <button
               type="submit"
-              className="w-full px-4 py-2 tracking-wide text-black border-solid border-2 border-slate-800  transition-colors duration-200 transform rounded-md hover:border-1 hover:text-black focus:outline-none focus:border-1"
+              className="w-full px-4 py-2 tracking-wide text-black border-solid border-2 border-slate-800  transition-colors duration-200 transform hover:border-1 hover:text-black focus:outline-none focus:border-1"
             >
               ثبت نام
             </button>
