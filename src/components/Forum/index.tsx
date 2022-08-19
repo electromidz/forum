@@ -3,13 +3,11 @@ import React, { useEffect, useState } from "react";
 import useSWR from "swr";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 const Forum = () => {
   const { data, error } = useSWR("/api/posts");
   const [selectedId, setSelectedId] = useState<any>(null);
-  useEffect(() => {
-    console.log("DATA -> ", data?.data);
-  }, [data]);
 
   const svgVariant = {
     hidden: { rotate: -180 },
@@ -36,10 +34,10 @@ const Forum = () => {
     },
   };
   return (
-    <div dir="rtl" style={{ backgroundColor: "#f3f4f6" }}>
+    <div dir="rtl">
       <Navbar />
       <div style={{ width: 50, height: 50 }}>
-        <div
+        {/* <div
           style={{
             position: "absolute",
             top: 0,
@@ -85,19 +83,16 @@ const Forum = () => {
               </g>
             </g>
           </motion.svg>
-        </div>
+        </div> */}
       </div>
       {!data && !error && <p>Loading...</p>}
       {!data && error && <p>No profile data</p>}
-      <div className="flex flex-wrap justify-center">
+      <div className="flex flex-wrap justify-start">
         {data?.data.map((e: any) => {
           return (
             <React.Fragment key={e.id}>
               <motion.div
-                className="w-200 w-80 h-48 overflow-hidden p-6 m-3 border border-gray-100 rounded-xl bg-gray-50  sm:space-x-8 sm:p-8"
-                style={{
-                  borderRadius: "1.2rem",
-                }}
+                className="w-200 w-80 h-48 overflow-hidden p-6 m-3 border border-black bg-gray-50  sm:space-x-8 sm:p-8"
                 layoutId={e.id}
                 onClick={() => setSelectedId(e.id)}
                 animate={{
@@ -110,7 +105,7 @@ const Forum = () => {
                   duration: 0.6,
                 }}
               >
-                <div className="flex justify-between">
+                <div className="flex justify-between my-2">
                   <Image
                     src={e?.author?.avatar}
                     alt={e?.author.name}
@@ -126,7 +121,7 @@ const Forum = () => {
                   {e?.title}
                 </motion.h5>
                 <motion.p className="text-sm mt-1">
-                  {e?.content.slice(0, 150) + "..."}
+                  {e?.content.slice(0, 100) + "..."}
                 </motion.p>
                 <p>{}</p>
               </motion.div>
